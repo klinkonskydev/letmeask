@@ -14,6 +14,8 @@
       align-items: center;
       justify-content: space-between;
 
+      transition: .2s;
+
       > img
       {
         max-height: 45px;
@@ -28,6 +30,10 @@
         {
           height: 40px;
         }
+      }
+
+      @media (max-width: 590px){
+        padding: 0 23px;
       }
     }
   }
@@ -63,6 +69,25 @@
         color: #fff;
         font-weight: 500;
         font-size: 14px;
+      }
+    }
+
+    @media (max-width: 816px){
+      width: 100%;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 450px){
+      padding: 0 10px;
+    }
+
+    @media (max-width: 612px){
+      .room-title
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
       }
     }
   }

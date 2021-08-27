@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 import logoIMG from '../assets/logo.svg'
 
@@ -22,6 +22,7 @@ export function Room(){
     const { user } = useAuth();
     const params = useParams<RoomParams>();
     const roomId = params.id;
+    const history = useHistory()
 
     const [newQuestion, setNewQuestion] = useState('');
     const { title, question } = useRoom(roomId);
@@ -63,6 +64,10 @@ export function Room(){
         }
     };
 
+    async function goBackLoginPage(){
+        history.push(`/`)
+    };
+
     return (
         <div id="page-room">
             <header>
@@ -92,7 +97,12 @@ export function Room(){
                             <span>{user.name}</span>
                         </section>
                        ):(
-                           <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
+                           <span>Para enviar uma pergunta, 
+                            <button
+                                onClick={goBackLoginPage}
+                            >
+                             faça seu login
+                            </button>.</span>
                        ) }
                         <Button type="submit" disabled={!user}>Enviar pergunta</Button>
                     </div>
